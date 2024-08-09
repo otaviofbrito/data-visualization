@@ -75,10 +75,11 @@ dfres = pd.DataFrame({
 })
 
 #df_filtered = dfres[dfres['Year'] % 10 == 0]
+sns.set_theme(style="darkgrid")
 
-fig = px.line(dfres, x='Year', y='Global Efficiency', markers=True)
-fig.show()
+# fig = px.line(dfres, x='Year', y='Global Efficiency', markers=True)
+# fig.show()
 
-#sns.lineplot(data=dfres, x='Year', y='Global Efficiency', marker='o', markersize=4)
+sns.lineplot(data=dfres, x='Year', y='Global Efficiency', marker='o', markersize=4, palette='mako')
 
-#plt.savefig("output_plot.png")
+plt.savefig("output_plot.png")

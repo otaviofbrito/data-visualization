@@ -28,11 +28,11 @@ connection.close()
 # fig = px.line(df, x="year", y="average", title='teste')
 # fig.show()
 
+sns.set_theme(style="darkgrid")
 sns.lineplot(data=df, x='year', y='average')
 
 # Change the labels
 plt.xlabel("Year")
 plt.ylabel("Fee in millions of euros")
 plt.title("Average Transfer Fee in Euros")
-
 plt.savefig("avg_fee.png")
