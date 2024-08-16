@@ -14,10 +14,10 @@ connection = mysql.connector.connect(
 )
 
 query = """
-SELECT AVG(transfer_fee) AS average, year FROM transfers
-WHERE year > 1900 AND year <= 2024 AND transfer_fee != 0
+SELECT year, COUNT(*) as count FROM transfers t 
+WHERE year < 2024 AND year > 1990
 GROUP BY(year)
-ORDER BY(year);
+ORDER BY (year) DESC;
 """
 
 df = pd.read_sql(query, connection)
@@ -29,10 +29,10 @@ connection.close()
 # fig.show()
 
 sns.set_theme(style="darkgrid")
-sns.lineplot(data=df, x='year', y='average')
+sns.lineplot(data=df, x='year', y='count')
 
 # Change the labels
 plt.xlabel("Year")
-plt.ylabel("Fee in millions of euros")
-plt.title("Average Transfer Fee in Euros")
-plt.savefig("avg_fee.png")
+plt.ylabel("Number of transfers")
+plt.title("Number of transfers per year")
+plt.savefig("num_transfers.png")
