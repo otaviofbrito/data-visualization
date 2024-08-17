@@ -31,7 +31,7 @@ palette = sns.color_palette("mako", len(df['type'].unique()))
 
 sns.barplot(data=df, x='type', y='transfers', hue='transfers', palette=palette)
 legend_labels = [f'{t} ({df[df["type"] == t]["transfers"].sum()/1e6:.2f}m)' for t in df['type'].unique()]
-handles = [mpatches.Patch(color=palette[i], label=legend_labels[i]) for i in range(len(legend_labels))]
+handles = [mpatches.Patch(color=palette[i], label=legend_labels[::-1][i]) for i in range(len(legend_labels))]
 plt.legend(handles=handles)
 
 plt.xlabel("Type of Transfer")  # X-axis label

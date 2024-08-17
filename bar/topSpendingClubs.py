@@ -43,12 +43,12 @@ sns.barplot(data=df, x='sum', y='clubs', hue='sum',palette=palette)
 
 
 legend_labels = [f'{t} ({df[df["clubs"] == t]["sum"].sum()/1e6:.2f}m)' for t in df['clubs'].unique()]
-handles = [mpatches.Patch(color=palette[i], label=legend_labels[i]) for i in range(len(legend_labels))]
+handles = [mpatches.Patch(color=palette[i], label=legend_labels[::-1][i]) for i in range(len(legend_labels))]
 plt.legend(handles=handles)
 
 
 # Change the labels
-plt.xlabel("Total Spent in Euros")
+plt.xlabel("Total Received in Euros")
 plt.ylabel("Clubs")
 plt.title("Top Selling Clubs")
 
